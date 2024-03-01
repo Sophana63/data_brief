@@ -10,10 +10,10 @@ COPY classes /app/classes
 COPY data /app/data
 COPY data2 /app/data2
 COPY hello-world.py /app/
-COPY insert-values.py /app/
+COPY app.py /app/
 
 # install dependencies
 RUN pip install -r requirements.txt
 
 # Exécution d'un script "hello-world" (exemple)
-CMD ["python", "insert-values.py"]
+CMD ["python", "app.py"]

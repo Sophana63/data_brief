@@ -3,7 +3,7 @@
 
 ## 1. Schéma de l'architecture - MCD
 
-![MCD](mcd_data_e_blanc.png)
+![MCD](./images/mcd_data_e_blanc.png)
 
 ## 2. Schéma de la base de données
 
@@ -152,23 +152,6 @@ INSERT INTO Resultats_Analyses (Description, Resultat) VALUES
 ('Analyse de ventes par produit', 'Quantité totale par produit calculée avec succès');
 ```
 
-## Architecture du Système
-
-| Service d'exécution des scripts (ScriptService) | Service de stockage de données (DatabaseService) |
-|--------------------------------------------------|--------------------------------------------------|
-| **Objectif :** Exécution de scripts.             | **Objectif :** Stockage des données.             |
-|                                                  |                                                  |
-| **Entrées :**                                    | **Entrées :**                                    |
-| Port : 5000 (HTTP POST) - Pour recevoir des  requêtes POST avec les scripts à exécuter.      | Port : 5432 (JDBC/ODBC) - Pour recevoir des  données à stocker dans la base de données.     |
-|     
-| Sens : HTTP POST                                 | Sens : JDBC/ODBC                                 |
-|                                                  |                                                  |
-| **Sorties :**                                   | **Sorties :**                                   |
-| Port : 5001 (HTTP GET) - Pour fournir des         | Pas de port de sortie direct, mais peut fournir |
-| résultats ou des informations après l'exécution   | des accès aux données stockées sur demande      |
-| des scripts.                                     | (par exemple, via des requêtes SQL).            |
-
-
 
 ## 3. Dockerfile pour le service d'exécution de scripts
 
@@ -185,7 +168,8 @@ COPY hello-world.py /app/
 WORKDIR /app
 
 # Exécution du script "hello-world" 
-CMD ["python", "hello-world.py"]
+# CMD ["python", "hello-world.py"]
+CMD ["python", "app.py"]
 
 ```
 
@@ -195,3 +179,12 @@ CMD ["python", "hello-world.py"]
 # monter une image docker avec le tag "briefdatainge"
 docker build -t briefdatainge .
 ```
+
+Résultat du build
+
+![terminal](./images/docker_terminal.png)
+
+
+Docker Desktop
+
+![Docker Desktop](./images/docker.png)
