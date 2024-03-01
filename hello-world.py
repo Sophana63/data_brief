@@ -48,8 +48,8 @@ print("")
 request3 = """
 SELECT v.ID_Reference_produit, p.Nom, v.Quantite, v.Date, m.Ville
 FROM Ventes v
-RIGHT JOIN Magasins m ON m.ID_Magasin = v.ID_Magasin
-RIGHT JOIN Produits p ON p.ID_Reference_produit = v.ID_Reference_produit
+LEFT JOIN Magasins m ON m.ID_Magasin = v.ID_Magasin
+LEFT JOIN Produits p ON p.ID_Reference_produit = v.ID_Reference_produit
 WHERE m.Ville = 'Paris'
 """
 print("----------------------------------------")

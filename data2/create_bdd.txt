@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS Magasins;
+DROP TABLE IF EXISTS Ventes;
+DROP TABLE IF EXISTS Produits;
+
+CREATE TABLE IF NOT EXISTS Produits (
+    Nom VARCHAR(255),
+    ID_Reference_produit VARCHAR(255) PRIMARY KEY,
+    Prix FLOAT,
+    Stock INT
+);
+
+CREATE TABLE IF NOT EXISTS Magasins (
+    ID_Magasin INT PRIMARY KEY,
+    Ville VARCHAR(255),
+    Nombre_de_salarie INT
+);
+
+-- Création de la table "Ventes"
+CREATE TABLE IF NOT EXISTS Ventes (
+    Date DATE,
+    ID_Reference_produit VARCHAR(255),
+    Quantite INT,
+    ID_Magasin INT,
+    FOREIGN KEY (ID_Reference_produit) REFERENCES Produits (ID_Reference_produit),
+    FOREIGN KEY (ID_Magasin) REFERENCES Magasins (ID_Magasin)
+);

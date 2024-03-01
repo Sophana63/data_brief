@@ -1,5 +1,5 @@
 import sqlite3
-import json
+from tqdm import tqdm
 
 class DatabaseManager:
     def __init__(self, db):
@@ -29,11 +29,5 @@ class DatabaseManager:
             c.executescript(file_data)
         conn.commit()
         conn.close()
-
-class VenteDatabase(DatabaseManager):
-    def test_sql(self, query):
-        """
-        Pour tester les requêtes SQL
-        """       
-        return self.execute_sql(query, ())    
+     
     
